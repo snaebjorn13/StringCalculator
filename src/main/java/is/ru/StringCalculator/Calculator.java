@@ -18,6 +18,14 @@ public class Calculator {
 			}
 			return sumOfMultipleNumbers(text);
 		}
+		else if(text.contains("\n")){
+			String[] numbers = text.split("\n");
+			int sum = 0;
+			for(int i = 0; i < numbers.length; i++){
+				sum += toInt(numbers[i]);
+			}
+			return sum;
+		}
 		else{
 			return toInt(text);
 		}
