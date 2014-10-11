@@ -7,6 +7,15 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.contains(",")){
+			if(text.contains("\n")){
+				String[] texts = text.split("\n");
+				int sum = 0;
+				for(int i = 0; i < texts.length; i++){
+					sum += sumOfMultipleNumbers(texts[i]);
+				}
+				return sum;
+
+			}
 			return sumOfMultipleNumbers(text);
 		}
 		else{

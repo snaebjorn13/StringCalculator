@@ -38,4 +38,9 @@ public class CalculatorTest{
 	public void testOneTwoThreeFourNumbers(){
 		assertEquals(10, Calculator.add("1,2,3,4"));
 	}
+
+	@Test
+	public void testOneNewlineTwoThreeNumbers(){
+		assertEquals(6, Calculator.add("1,\n2,3"));
+	}
 }
