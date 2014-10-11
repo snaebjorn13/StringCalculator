@@ -7,11 +7,20 @@ public class Calculator {
 		 	return 0;
 		 }
 		 else if(text.contains(",")){
-		 	String[] numbers = text.split(",");
-		 	return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
+		 	String[] numbers = split(text);
+		 	return toInt(numbers[0]) + toInt(numbers[1]);
 		 }
 		 else{
 		 	return 1;
 		 }
 	}
+
+	private static int toInt(String number){
+		return Integer.parseInt(number);
+	}
+
+	private static String[] split(String text){
+		return text.split(",");
+	}
+
 }
