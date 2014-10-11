@@ -8,12 +8,11 @@ public class Calculator {
 		 }
 		 else if(text.contains(",")){
 		 	String[] numbers = split(text);
-		 	if(numbers.length == 2){
-		 		return toInt(numbers[0]) + toInt(numbers[1]);
+		 	int sum = 0;
+		 	for(int i = 0; i < numbers.length; i++){
+		 		sum += toInt(numbers[i]);
 		 	}
-		 	else{
-		 		return toInt(numbers[0]) + toInt(numbers[1]) + toInt(numbers[2]);
-		 	}
+		 	return sum;
 		 }
 		 else{
 		 	return toInt(text);
