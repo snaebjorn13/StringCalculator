@@ -1,7 +1,7 @@
 package is.ru.StringCalculator;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.test;
+import org.junit.Test;
 
 public class CalculatorTest{
 
