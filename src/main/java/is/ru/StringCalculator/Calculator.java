@@ -8,31 +8,7 @@ public class Calculator {
 		}
 		if(text.length() > 4){
 			if(text.substring(0, 2).equals("//")){
-				String delimiter = text.substring(2, 3);
-				String equation = text.substring(4);
-				String[] numbers = equation.split(delimiter);
-				int sum = 0;
-				if(equation.contains(",") && equation.contains("\n")){
-					for(int i = 0; i < numbers.length; i++){
-						sum += splitByCommaAndNewline(numbers[i]);
-					}
-				}
-				else if(equation.contains(",")){
-					for(int i = 0; i < numbers.length; i++){
-						sum += splitByComma(numbers[i]);
-					}
-				}
-				else if(equation.contains("\n")){
-					for(int i = 0; i < numbers.length; i++){
-						sum += splitByNewline(numbers[i]);
-					}
-				}
-				else{	
-					for(int i = 0; i < numbers.length; i++){
-						sum += toInt(numbers[i]);
-					}
-				}
-				return sum;
+				return customDelimiter(text);
 			}
 		}
 		if(text.contains(",")){
@@ -40,10 +16,10 @@ public class Calculator {
 				return splitByCommaAndNewline(text);
 
 			}
-			return splitByComma(text);
+			return splitByDelimiter(text, ",");
 		}
 		if(text.contains("\n")){
-			return splitByNewline(text);
+			return splitByDelimiter(text, "\n");
 		}
 		return toInt(text);
 	}
@@ -56,8 +32,8 @@ public class Calculator {
 		return text.split(",");
 	}
 
-	private static int splitByNewline(String text){
-		String[] numbers = text.split("\n");
+	private static int splitByDelimiter(String text, String delimiter){
+		String[] numbers = text.split(delimiter);
 		int sum = 0;
 		for(int i = 0; i < numbers.length; i++){
 			sum += toInt(numbers[i]);
@@ -69,18 +45,36 @@ public class Calculator {
 		String[] texts = text.split("\n");
 		int sum = 0;
 		for(int i = 0; i < texts.length; i++){
-			sum += splitByComma(texts[i]);
+			sum += splitByDelimiter(texts[i], ",");
 		}
 		return sum;
 	}
 
-	private static int splitByComma(String text){
-		String[] numbers = split(text);
+	private static int customDelimiter(String text){
+		String delimiter = text.substring(2, 3);
+		String equation = text.substring(4);
+		String[] numbers = equation.split(delimiter);
 		int sum = 0;
-		for(int i = 0; i < numbers.length; i++){
-			sum += toInt(numbers[i]);
+		if(equation.contains(",") && equation.contains("\n")){
+			for(int i = 0; i < numbers.length; i++){
+				sum += splitByCommaAndNewline(numbers[i]);
+			}
+		}
+		else if(equation.contains(",")){
+			for(int i = 0; i < numbers.length; i++){
+				sum += splitByDelimiter(numbers[i], ",");
+			}
+		}
+		else if(equation.contains("\n")){
+			for(int i = 0; i < numbers.length; i++){
+			sum += splitByDelimiter(numbers[i], "\n");
+			}
+		}
+		else{	
+			for(int i = 0; i < numbers.length; i++){
+				sum += toInt(numbers[i]);
+			}
 		}
 		return sum;
 	}
-
-}
+}	
