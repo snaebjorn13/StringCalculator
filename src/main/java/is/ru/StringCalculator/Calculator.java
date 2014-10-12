@@ -16,6 +16,11 @@ public class Calculator {
 						sum += splitByComma(numbers[i]);
 					}
 				}
+				else if(text.contains("\n")){
+					for(int i = 0; i < numbers.length; i++){
+						sum += splitByNewline(numbers[i]);
+					}
+				}
 				else{	
 					for(int i = 0; i < numbers.length; i++){
 						sum += toInt(numbers[i]);

@@ -58,4 +58,9 @@ public class CalculatorTest{
 	public void testDelimiterqWithComma(){
 		assertEquals(6, Calculator.add("//q\n1q2,3"));
 	}
+
+	@Test
+	public void testDelimiterSemicolonWithNewline(){
+		assertEquals(6, Calculator.add("//;\n1;2\n3"));
+	}
 }
