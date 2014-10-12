@@ -8,23 +8,13 @@ public class Calculator {
 		}
 		else if(text.contains(",")){
 			if(text.contains("\n")){
-				String[] texts = text.split("\n");
-				int sum = 0;
-				for(int i = 0; i < texts.length; i++){
-					sum += sumOfMultipleNumbers(texts[i]);
-				}
-				return sum;
+				return splitByCommaAndNewline(text);
 
 			}
 			return sumOfMultipleNumbers(text);
 		}
 		else if(text.contains("\n")){
-			String[] numbers = text.split("\n");
-			int sum = 0;
-			for(int i = 0; i < numbers.length; i++){
-				sum += toInt(numbers[i]);
-			}
-			return sum;
+			return splitByComma(text);
 		}
 		else{
 			return toInt(text);
@@ -37,6 +27,24 @@ public class Calculator {
 
 	private static String[] split(String text){
 		return text.split(",");
+	}
+
+	private static int splitByComma(String text){
+		String[] numbers = text.split("\n");
+		int sum = 0;
+		for(int i = 0; i < numbers.length; i++){
+			sum += toInt(numbers[i]);
+		}
+		return sum;
+	}
+
+	private static int splitByCommaAndNewline(String text){
+		String[] texts = text.split("\n");
+		int sum = 0;
+		for(int i = 0; i < texts.length; i++){
+			sum += sumOfMultipleNumbers(texts[i]);
+		}
+		return sum;
 	}
 
 	private static int sumOfMultipleNumbers(String text){
