@@ -10,9 +10,16 @@ public class Calculator {
 			if(text.substring(0, 2).equals("//")){
 				String delimiter = text.substring(2, 3);
 				String[] numbers = text.substring(4).split(delimiter);
-				int sum = 0;	
-				for(int i = 0; i < numbers.length; i++){
-					sum += toInt(numbers[i]);
+				int sum = 0;
+				if(text.contains(",")){
+					for(int i = 0; i < numbers.length; i++){
+						sum += splitByComma(numbers[i]);
+					}
+				}
+				else{	
+					for(int i = 0; i < numbers.length; i++){
+						sum += toInt(numbers[i]);
+					}
 				}
 				return sum;
 			}

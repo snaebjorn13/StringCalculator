@@ -53,4 +53,9 @@ public class CalculatorTest{
 	public void testDelimiterSemiColon(){
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
+
+	@Test
+	public void testDelimiterqWithComma(){
+		assertEquals(6, Calculator.add("//q\n1q2,3"));
+	}
 }
