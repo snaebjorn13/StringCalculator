@@ -9,14 +9,20 @@ public class Calculator {
 		if(text.length() > 4){
 			if(text.substring(0, 2).equals("//")){
 				String delimiter = text.substring(2, 3);
-				String[] numbers = text.substring(4).split(delimiter);
+				String equation = text.substring(4);
+				String[] numbers = equation.split(delimiter);
 				int sum = 0;
-				if(text.contains(",")){
+				if(equation.contains(",") && equation.contains("\n")){
+					for(int i = 0; i < numbers.length; i++){
+						sum += splitByCommaAndNewline(numbers[i]);
+					}
+				}
+				else if(equation.contains(",")){
 					for(int i = 0; i < numbers.length; i++){
 						sum += splitByComma(numbers[i]);
 					}
 				}
-				else if(text.contains("\n")){
+				else if(equation.contains("\n")){
 					for(int i = 0; i < numbers.length; i++){
 						sum += splitByNewline(numbers[i]);
 					}
