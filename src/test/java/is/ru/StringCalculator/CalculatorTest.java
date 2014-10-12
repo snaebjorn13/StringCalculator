@@ -48,4 +48,9 @@ public class CalculatorTest{
 	public void testOneNewlTwoNewlThreeNewlFourNumbers(){
 		assertEquals(10, Calculator.add("1\n2\n3\n4"));
 	}
+
+	@Test
+	public void testDelimiterSemiColon(){
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
 }
