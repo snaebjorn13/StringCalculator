@@ -6,6 +6,9 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		if(text.contains("-")){
+			negativeNumbers(text);
+		}
 		if(text.length() > 4){
 			if(text.substring(0, 2).equals("//")){
 				return customDelimiter(text);
@@ -22,6 +25,13 @@ public class Calculator {
 			return splitByDelimiter(text, "\n");
 		}
 		return toInt(text);
+	}
+
+	private static void negativeNumbers(String text) throws IllegalArgumentException{
+		String[] parts = text.split("-");
+		String number = "-" + parts[1].substring(0, 1);
+		String message = "Negatives not allowed: " + number;
+		throw new IllegalArgumentException(message);
 	}
 
 	private static int toInt(String number){

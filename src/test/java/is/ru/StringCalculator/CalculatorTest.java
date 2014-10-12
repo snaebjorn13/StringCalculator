@@ -68,4 +68,13 @@ public class CalculatorTest{
 	public void testDelimiterpWithCommaAndNewline(){
 		assertEquals(10, Calculator.add("//p\n1p2,3\n4"));
 	}
+
+	@Test
+	public void testMinusOneTwoNumber(){
+		try{
+			int sum = Calculator.add("-1,2");
+		} catch(IllegalArgumentException ex){
+			assertEquals(ex.getMessage(), "Negatives not allowed: -1");
+		}
+	}
 }
