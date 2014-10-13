@@ -69,6 +69,11 @@ public class CalculatorTest{
 		assertEquals(10, Calculator.add("//p\n1p2,3\n4"));
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testExpressionThrown(){
+		int sum = Calculator.add("-1,2");
+	}
+
 	@Test
 	public void testMinusOneTwoNumber(){
 		try{
