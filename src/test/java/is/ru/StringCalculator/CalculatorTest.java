@@ -75,11 +75,20 @@ public class CalculatorTest{
 	}
 
 	@Test
-	public void testMinusOneTwoNumber(){
+	public void testMinusOneTwoNumbers(){
 		try{
 			int sum = Calculator.add("-1,2");
 		} catch(IllegalArgumentException ex){
 			assertEquals(ex.getMessage(), "Negatives not allowed: -1");
+		}
+	}
+
+	@Test
+	public void testMinusOneTwoMinusThreeNumbers(){
+		try{
+			int sum = Calculator.add("-1,2,-3");
+		} catch(IllegalArgumentException ex){
+			assertEquals(ex.getMessage(), "Negatives not allowed: -1, -3");
 		}
 	}
 }

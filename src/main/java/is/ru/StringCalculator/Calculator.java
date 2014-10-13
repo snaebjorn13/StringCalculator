@@ -29,8 +29,14 @@ public class Calculator {
 
 	private static void negativeNumbers(String text) throws IllegalArgumentException{
 		String[] parts = text.split("-");
-		String number = "-" + parts[1].substring(0, 1);
-		String message = "Negatives not allowed: " + number;
+		String message = "Negatives not allowed: ";
+		for(int i = 1; i < parts.length; i++){
+			message += "-" + parts[i].substring(0,1);
+			if(i < parts.length - 1){
+				message += ", ";
+			}
+		}
+		
 		throw new IllegalArgumentException(message);
 	}
 
