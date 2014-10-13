@@ -49,7 +49,11 @@ public class Calculator {
 	}
 
 	private static int toInt(String number){
-		return Integer.parseInt(number);
+		int int_number = Integer.parseInt(number);
+		if(int_number > 1000){
+			return 0;
+		}
+		return int_number;
 	}
 
 	private static String[] split(String text){

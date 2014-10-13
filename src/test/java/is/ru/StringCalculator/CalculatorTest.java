@@ -91,4 +91,9 @@ public class CalculatorTest{
 			assertEquals(ex.getMessage(), "Negatives not allowed: -1, -3");
 		}
 	}
+
+	@Test
+	public void testThousandAndOneTwoNumbers(){
+		assertEquals(2, Calculator.add("1001,2"));
+	}
 }
