@@ -96,4 +96,9 @@ public class CalculatorTest{
 	public void testThousandAndOneTwoNumbers(){
 		assertEquals(2, Calculator.add("1001,2"));
 	}
+
+	@Test
+	public void testThousandAndOneThousandAndTwoThousandAndThreeNumbers(){
+		assertEquals(0, Calculator.add("1001,1002,1003"));
+	}
 }
