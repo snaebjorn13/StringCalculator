@@ -55,18 +55,8 @@ public class CalculatorTest{
 	}
 
 	@Test
-	public void testDelimiterqWithComma(){
-		assertEquals(6, Calculator.add("//q\n1q2,3"));
-	}
-
-	@Test
-	public void testDelimiterSemicolonWithNewline(){
-		assertEquals(6, Calculator.add("//;\n1;2\n3"));
-	}
-
-	@Test
-	public void testDelimiterpWithCommaAndNewline(){
-		assertEquals(10, Calculator.add("//p\n1p2,3\n4"));
+	public void testDelimiterw(){
+		assertEquals(6, Calculator.add("//w\n1w2w3"));
 	}
 
 	@Test(expected = IllegalArgumentException.class)

@@ -83,25 +83,8 @@ public class Calculator {
 		String equation = text.substring(4);
 		String[] numbers = equation.split(delimiter);
 		int sum = 0;
-		if(equation.contains(",") && equation.contains("\n")){
-			for(int i = 0; i < numbers.length; i++){
-				sum += splitByCommaAndNewline(numbers[i]);
-			}
-		}
-		else if(equation.contains(",")){
-			for(int i = 0; i < numbers.length; i++){
-				sum += splitByDelimiter(numbers[i], ",");
-			}
-		}
-		else if(equation.contains("\n")){
-			for(int i = 0; i < numbers.length; i++){
-			sum += splitByDelimiter(numbers[i], "\n");
-			}
-		}
-		else{	
-			for(int i = 0; i < numbers.length; i++){
-				sum += toInt(numbers[i]);
-			}
+		for(int i = 0; i < numbers.length; i++){
+			sum += toInt(numbers[i]);
 		}
 		return sum;
 	}
