@@ -7,23 +7,31 @@ public class Calculator {
 			return 0;
 		}
 		if(text.contains("-")){
+			// throw exception along with message detailing
+			// which numbers in the input are negative
 			negativeNumbers(text);
 		}
 		if(text.length() > 4){
 			if(text.substring(0, 2).equals("//")){
+				// if a custom delimiter is chosen, we split by that
+				// delimiter, possibly also by comma and newline
 				return customDelimiter(text);
 			}
 		}
 		if(text.contains(",")){
+			// if text contains both \n and , we split by both delimiters
 			if(text.contains("\n")){
 				return splitByCommaAndNewline(text);
 
 			}
+			// if text only contains commas, we split by comma
 			return splitByDelimiter(text, ",");
 		}
 		if(text.contains("\n")){
+			// if text only contains newlines, we split by newline
 			return splitByDelimiter(text, "\n");
 		}
+		// no delimiters, return the number
 		return toInt(text);
 	}
 
