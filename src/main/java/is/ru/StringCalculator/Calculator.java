@@ -84,7 +84,7 @@ public class Calculator {
 		m.matches();
 		String delimiter = m.group(1);
 		String tokens = m.group(2);
-		String numbers[] = tokens.split(delimiter);
+		String numbers[] = tokens.split(Pattern.quote(delimiter));
 		int sum = 0;
 		for(int i = 0; i < numbers.length; i++){
 			sum += toInt(numbers[i]);

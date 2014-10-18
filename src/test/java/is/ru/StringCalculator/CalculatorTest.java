@@ -59,6 +59,10 @@ public class CalculatorTest{
 		assertEquals(6, Calculator.add("//w\n1w2w3"));
 	}
 
+	@Test
+	public void testDelimiterMetaChar(){
+		assertEquals(10, Calculator.add("//*\n1*2*3*4"));
+	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testExpressionThrown(){
