@@ -1,4 +1,5 @@
 package is.ru.StringCalculator;
+import java.util.regex.*;
 
 public class Calculator {
 
@@ -79,9 +80,11 @@ public class Calculator {
 	}
 
 	private static int customDelimiter(String text){
-		String delimiter = text.substring(2, 3);
-		String equation = text.substring(4);
-		String[] numbers = equation.split(delimiter);
+		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+		m.matches();
+		String delimiter = m.group(1);
+		String tokens = m.group(2);
+		String numbers[] = tokens.split(delimiter);
 		int sum = 0;
 		for(int i = 0; i < numbers.length; i++){
 			sum += toInt(numbers[i]);
