@@ -18,16 +18,7 @@ public class Calculator {
 				return customDelimiter(text);
 			}
 			if(text.matches("^(//\\[.+\\]\n.*)$")){
-				Matcher m = Pattern.compile("//\\[(.*)\\]\n(.*)").matcher(text);
-				m.matches();
-				String delimiter = m.group(1);
-				String tokens = m.group(2);
-				String numbers[] = tokens.split(Pattern.quote(delimiter));
-				int sum = 0;
-				for(int i = 0; i < numbers.length; i++){
-					sum += toInt(numbers[i]);
-				}
-				return sum;
+				return customDelimiterOfAnyLength(text);
 			}
 		}
 		if(text.contains(",")){
@@ -92,6 +83,19 @@ public class Calculator {
 
 	private static int customDelimiter(String text){
 		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+		m.matches();
+		String delimiter = m.group(1);
+		String tokens = m.group(2);
+		String numbers[] = tokens.split(Pattern.quote(delimiter));
+		int sum = 0;
+		for(int i = 0; i < numbers.length; i++){
+			sum += toInt(numbers[i]);
+		}
+		return sum;
+	}
+
+	private static int customDelimiterOfAnyLength(String text){
+		Matcher m = Pattern.compile("//\\[(.*)\\]\n(.*)").matcher(text);
 		m.matches();
 		String delimiter = m.group(1);
 		String tokens = m.group(2);
