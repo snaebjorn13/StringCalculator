@@ -96,4 +96,9 @@ public class CalculatorTest{
 	public void testThousandAndOneThousandAndTwoThousandAndThreeNumbers(){
 		assertEquals(0, Calculator.add("1001,1002,1003"));
 	}
+
+	@Test
+	public void testDelimiterOfAnyLength(){
+		assertEquals(10, Calculator.add("//[***]\n1***2***3***4"));
+	}
 }

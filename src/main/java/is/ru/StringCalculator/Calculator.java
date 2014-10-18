@@ -12,11 +12,22 @@ public class Calculator {
 			// which numbers in the input are negative
 			negativeNumbers(text);
 		}
-		if(text.length() > 4){
-			if(text.substring(0, 2).equals("//")){
-				// if a custom delimiter is chosen, we split by that
-				// delimiter, possibly also by comma and newline
+		if(text.startsWith("//")){
+			if(text.matches("^(//.\n.*)$")){
+				// if a custom delimiter is chosen, we split by that delimiter
 				return customDelimiter(text);
+			}
+			if(text.matches("^(//\\[.+\\]\n.*)$")){
+				Matcher m = Pattern.compile("//\\[(.*)\\]\n(.*)").matcher(text);
+				m.matches();
+				String delimiter = m.group(1);
+				String tokens = m.group(2);
+				String numbers[] = tokens.split(Pattern.quote(delimiter));
+				int sum = 0;
+				for(int i = 0; i < numbers.length; i++){
+					sum += toInt(numbers[i]);
+				}
+				return sum;
 			}
 		}
 		if(text.contains(",")){
